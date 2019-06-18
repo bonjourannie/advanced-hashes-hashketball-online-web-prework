@@ -169,7 +169,6 @@ def player_numbers(name)
     if team_data[:team_name] == name
       team_data[:players].each { |player_name, value|
         array << value[:number]
-      end
     end
   end
   array
