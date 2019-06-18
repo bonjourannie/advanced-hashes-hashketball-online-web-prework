@@ -1,273 +1,170 @@
-def game_hash
-  {
-    :home => {
-      :team_name => "Brooklyn Nets",
-      :colors => ["Black", "White"],
-      :players => {
-        "Alan Anderson" => {
-            number: 0,
-            shoe: 16,
-            points: 22,
-            rebounds: 12,
-            assists: 12,
-            steals: 3,
-            blocks: 1,
-            slam_dunks: 1
-        },
-        "Reggie Evans" => {
-            number: 30,
-            shoe: 14,
-            points: 12,
-            rebounds: 12,
-            assists: 12,
-            steals: 12,
-            blocks: 12,
-            slam_dunks: 7
-        },
-        "Brook Lopez" => {
-            number: 11,
-            shoe: 17,
-            points: 17,
-            rebounds: 19,
-            assists: 10,
-            steals: 3,
-            blocks: 1,
-            slam_dunks: 15
-        },
-        "Mason Plumlee" => {
-            number: 1,
-            shoe: 19,
-            points: 26,
-            rebounds: 12,
-            assists: 6,
-            steals: 3,
-            blocks: 8,
-            slam_dunks: 5
-        },
-        "Jason Terry" => {
-            number: 31,
-            shoe: 15,
-            points: 19,
-            rebounds: 2,
-            assists: 2,
-            steals: 4,
-            blocks: 11,
-            slam_dunks: 1
-        }
-      }
+def game_hash  
+
+
+  game_hash = {
+
+
+     :home => {
+
+
+     :team_name => 'Brooklyn Nets',
+    :colors => ['black', 'white'],
+    :players => [
+      {player_name: 'Alan Anderson', number: 0, shoe: 16, points: 22, rebounds: 12, assists: 12, steals: 3, blocks: 1, slam_dunks: 1},
+      {player_name: 'Reggie Evans', number: 30, shoe: 14, points: 12, rebounds: 12, assists: 12, steals: 12, blocks: 12, slam_dunks: 7},
+      {player_name: 'Brook Lopez', number: 11, shoe: 17, points: 17, rebounds: 19, assists: 10, steals: 3, blocks: 1, slam_dunks: 15},
+      {player_name: 'Mason Plumlee', number: 1, shoe: 19, points: 26, rebounds: 12, assists: 6, steals: 3, blocks: 8, slam_dunks: 5},
+      {player_name: 'Jason Terry', number: 31, shoe: 15, points: 19, rebounds: 2, assists: 2, steals: 4, blocks: 11, slam_dunks: 1}
+      ]
     },
-    :away => {
-      :team_name => "Charlotte Hornets",
-      :colors => ["Turquoise", "Purple"],
-      :players => {
-        "Jeff Adrien" => {
-            number: 4,
-            shoe: 18,
-            points: 10,
-            rebounds: 1,
-            assists: 1,
-            steals: 2,
-            blocks: 7,
-            slam_dunks: 2
-        },
-        "Bismak Biyombo" => {
-            number: 0,
-            shoe: 16,
-            points: 12,
-            rebounds: 4,
-            assists: 7,
-            steals: 7,
-            blocks: 15,
-            slam_dunks: 10
-        },
-        "DeSagna Diop" => {
-            number: 2,
-            shoe: 14,
-            points: 24,
-            rebounds: 12,
-            assists: 12,
-            steals: 4,
-            blocks: 5,
-            slam_dunks: 5
-        },
-        "Ben Gordon" => {
-            number: 8,
-            shoe: 15,
-            points: 33,
-            rebounds: 3,
-            assists: 2,
-            steals: 1,
-            blocks: 1,
-            slam_dunks: 0
-        },
-        "Brendan Haywood" => {
-            number: 33,
-            shoe: 15,
-            points: 6,
-            rebounds: 12,
-            assists: 12,
-            steals: 22,
-            blocks: 5,
-            slam_dunks: 12
-        }
-      }
+
+
+
+
+
+
+   :away => {
+
+
+     :team_name => 'Charlotte Hornets',
+    :colors => ['turquoise', 'purple'],
+    :players => [
+      {player_name: 'Jeff Adrien', number: 4, shoe: 18, points: 10, rebounds: 1, assists: 1, steals: 2, blocks: 7, slam_dunks: 2},
+      {player_name: 'Bismak Biyombo', number: 0, shoe: 16, points: 12, rebounds: 4, assists: 7, steals: 7, blocks: 15, slam_dunks: 10},
+      {player_name: 'DeSagna Diop', number: 2, shoe: 14, points: 24, rebounds: 12, assists: 12, steals: 4, blocks: 5, slam_dunks: 5},
+      {player_name: 'Ben Gordon', number: 8, shoe: 15, points: 33, rebounds: 3, assists: 2, steals: 1, blocks: 1, slam_dunks: 0},
+      {player_name: 'Brendan Haywood', number: 33, shoe: 15, points: 6, rebounds: 12, assists: 12, steals: 22, blocks: 5, slam_dunks: 12}
+      ]
     }
   }
 end
 
-# Method, num_points_scoredtakes in an argument of a player's name 
-# and returns the number of points scored for that player.
+ def num_points_scored(player_name)
 
-def num_points_scored(name)
-   game_hash.each do |location, team_data|
-      team_data[:players].each do |player_name, data|
-         if player_name == name #check the name to match
-            return data[:points]
-         end
-      end
-   end
-end
+   game_hash.values.each do |team|  
+    team[:players].each do |player|
+      return player[:points] if player.has_value?(player_name)
+    end
+  end
 
-# Method shoe_size takes in an argument of a player's name 
-# and returns the shoe size for that player.
+ end
 
-def shoe_size(name)
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |player_name, data|
-      if player_name == name
-        return data[:shoe]
-      end
+
+ def shoe_size(player_name)
+
+   game_hash.values.each do |team_info|  
+    team_info[:players].each do |player|
+      return player[:shoe] if player.has_value?(player_name)
+    end
+  end
+
+ end
+
+ def team_colors(team)
+
+   game_hash.values.each do |team_info|
+    if team_info.has_value?(team)
+      return team_info[:colors].map(&:capitalize)
     end
   end
 end
 
-# Method team_colors takes in an argument of the team name 
-# and returns an array of that teams colors.
+ def team_names
+  game_hash.values.map {|value| value[:team_name]}
 
-def team_colors(name)
-  game_hash.each do |location, team_data|
-    if team_data[:team_name] == name
-      return team_data[:colors]
+ end
+
+ def player_numbers(team)
+
+   game_hash.values.each do |team_info|
+    if team_info.has_value?(team)
+      return team_info[:players].map { |player| player[:number]}
     end
   end
 end
 
-# Method team_names operates on the game hash to return an array of the team names.
 
-def team_names
-  game_hash.collect do |location, team_data|
-    team_data[:team_name]
-  end
-end
+ def player_stats(player_name)
 
-# Method player_numbers takes in an argument of a team name 
-# and returns an array of the jersey number's for that team.
-
-def player_numbers(name)
-  array = []
-   game_hash.each do |location, team_data|
-    if team_data[:team_name] == name
-      team_data[:players].each { |player_name, value|
-        array << value[:number]
-    end
-  end
-  array
-end
-
-# Method player_stats takes in an argument of a player's name 
-# and returns a hash of that player's stats.
-
-def player_stats(name)
-   game_hash.each do |location, team_data|
-      team_data[:players].each do |player_name, value|
-         if player_name == name
-            return value
-         end
-      end
-   end
-end
-
-# Method big_shoe_rebounds will return the number of rebounds associated with the player that has the largest shoe size. 
-
-def big_shoe_rebounds
-   shoe_size = 0
-   rebound = 0
-   game_hash.each do |location, team_data|
-      team_data[:players].each do |player_name, value|
-         if value[:shoe] > shoe_size
-            shoe_size = value[:shoe]
-            rebound = value[:rebounds]
-         end
-      end
-   end
-   rebound
-end
-
-# Bonus Questions:
-
-# Which player has the most points? Call the method most_points_scored.
-
-def most_points_scored
-   most_point = 0
-   player = nil
-   game_hash.each do |location, team_data|
-      team_data[:players].each do |player_name, value|
-         if value[:points] > most_point
-            most_point = value[:points]
-            player = player_name
-         end
-     end
-   end
-   player
-end
-
-# Which team has the most points? Call the method winning_team.
-
-def winning_team
-  home_team = 0
-  away_team = 0
-  game_hash[:home][:players].each do |name, value|
-    home_team += value[:points]
-  end
-  game_hash[:away][:players].each do |name, value|
-    away_team += value[:points]
-  end
-  if home_team > away_team
-      game_hash[:home][:team_name]
-  elsif home_team < away_team
-      game_hash[:away][:team_name]
-  else
-      "It's a tie!"
-  end
-end
-
-# Which player has the longest name? Call the method player_with_longest_name.
-
-def player_with_longest_name
-  longest = 0
-  player_name = nil
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |name, value|
-      if name.length > longest
-        player_name = name
+   game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      if player.has_value?(player_name)
+         player.delete(:player_name) 
+         return player
       end
     end
   end
-  player_name
-end
 
-# Write a method that returns true if the player with the longest name had the most steals. Call the method long_name_steals_a_ton?.
+ end
 
-def long_name_steals_a_ton?
-  name_with_steal = nil
-  steal_number = 0
-  game_hash.each do |location, team_data|
-    team_data[:players].each do |name, value|
-      if value[:steals] > steal_number
-        steal_number = value[:steals]
-        name_with_steal = name
+ def big_shoe_rebounds
+
+   biggest_shoe = 0
+  player_rebounds = 0
+  game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      if player[:shoe] > biggest_shoe
+        biggest_shoe = player[:shoe] 
+        player_rebounds = player[:rebounds] 
       end
     end
   end
-  name_with_steal == player_with_longest_name
+  return player_rebounds
 end
+
+
+ def most_points_scored
+
+   most_points = 0
+  points_owner = ""
+  game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      if player[:points] > most_points
+        most_points = player[:points] 
+        points_owner = player[:player_name] 
+      end
+    end
+  end
+  return points_owner
+end
+
+
+ def winning_team
+
+   top_team = {}
+  game_hash.values.each do |team_info|
+    team_points = 0
+    team_info[:players].each do |player|
+      team_points += player[:points]
+    end
+    top_team[team_info[:team_name]] = team_points
+  end
+  top_team.key(top_team.values.max) 
+end
+
+
+ def player_with_longest_name
+
+   longest_name = []
+  game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      longest_name << player[:player_name]
+    end
+  end
+longest_name.max_by{|name| name.length}
+end
+
+
+ def long_name_steals_a_ton?
+
+  longest = {}
+  game_hash.values.each do |team_info|
+    team_info[:players].each do |player|
+      longest[player[:player_name]] = player[:steals]
+    end
+  end
+
+ max_steals = longest.values.max
+longest[longest.key(max_steals)] == max_steals
+
+ end
